@@ -34,7 +34,9 @@ def generate_password():
 def add_details():
     with open("password.txt", "a") as file: # creates file called password.txt or adds to file if you already have it and adds user details you typed in
         file.write( "\n" + "Website:" + website_input.get() + "\n" + "Email/User: " + email_input.get() + "\n" + "Password: " + password_input.get())
-
+    website_input.delete(0, len(website_input.get())) # deletes inputs after details are saved
+    email_input.delete(0, len(email_input.get())) # deletes inputs after details are saved
+    password_input.delete(0, len(password_input.get())) # deletes inputs after details are saved
 
 
 
