@@ -1,6 +1,6 @@
 import random
 from tkinter import *
-
+import pyperclip
 # list storing letters numbers and symbols used for password
 letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 numbers = ["0","1","2","3","4","5","6","7","8","9"]
@@ -29,7 +29,7 @@ def generate_password():
     for x in range (0, len(combined)): # puts each str of combine into password string
         password += combined[x]
     password_input.insert(END, password) # inserts password variable
-
+    pyperclip.copy(password) # copies password
 
 def add_details():
     with open("password.txt", "a") as file: # creates file called password.txt or adds to file if you already have it and adds user details you typed in
