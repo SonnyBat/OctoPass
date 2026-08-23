@@ -21,7 +21,7 @@ def generate_password():
     password_input.delete(0,len(password)) # deletes password if generating new one
     combined = [] # makes combined list empty
     password = "" # makes password string empty
-    for x in range (0, random.randint(6,10)): # creates random password looping through lists adding to combine then shuffel
+    for x in range (0, random.randint(6,10)): # creates random password looping through lists adding to combine then shuffle
         combined += random.choice(letters)
         combined += random.choice(numbers)
         combined += random.choice(symbols)
