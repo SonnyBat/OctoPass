@@ -19,6 +19,7 @@ Make sure all the Python files are in the **same folder**.
 Then run:
 
 ```bash
+pip install pyperclip
 python main.py
 ```
 
@@ -31,6 +32,7 @@ That's it! The app should launch and you can start generating passwords and savi
 * Tkinter
 * File Handling
 * Random Password Generation
+* pyperclip
 
 ## 🔮 Future Ideas
 
