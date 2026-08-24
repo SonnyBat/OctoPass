@@ -1,6 +1,6 @@
 import random
 from tkinter import *
-import pyperclip
+
 # list storing letters numbers and symbols used for password
 letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 numbers = ["0","1","2","3","4","5","6","7","8","9"]
@@ -21,7 +21,7 @@ def generate_password():
     password_input.delete(0,len(password)) # deletes password if generating new one
     combined = [] # makes combined list empty
     password = "" # makes password string empty
-    for x in range (0, random.randint(6,10)): # creates random password looping through lists adding to combine then shuffle
+    for x in range (0, random.randint(6,10)): # creates random password looping through lists adding to combine then shuffel
         combined += random.choice(letters)
         combined += random.choice(numbers)
         combined += random.choice(symbols)
@@ -29,14 +29,12 @@ def generate_password():
     for x in range (0, len(combined)): # puts each str of combine into password string
         password += combined[x]
     password_input.insert(END, password) # inserts password variable
-    pyperclip.copy(password) # copies password
+
 
 def add_details():
     with open("password.txt", "a") as file: # creates file called password.txt or adds to file if you already have it and adds user details you typed in
-        file.write( "\n" + "Website:" + website_input.get() + "\n" + "Email/User: " + email_input.get() + "\n" + "Password: " + password_input.get() + "\n")
-    website_input.delete(0, len(website_input.get())) # deletes inputs after details are saved
-    email_input.delete(0, len(email_input.get())) # deletes inputs after details are saved
-    password_input.delete(0, len(password_input.get())) # deletes inputs after details are saved
+        file.write( "\n" + "Website:" + website_input.get() + "\n" + "Email/User: " + email_input.get() + "\n" + "Password: " + password_input.get())
+
 
 
 
@@ -49,14 +47,22 @@ def add_details():
 window = Tk()
 window.title("OctoPass")
 window.minsize(300, 300)
-canvas = Canvas(width=290, height=290, bg="#00B7CD", highlightthickness=0)
-octopass_img = PhotoImage(file="octopass.png")
-canvas.create_image(150, 150, image=octopass_img)
-canvas.grid(column=1, row=0)
+try:
+    canvas = Canvas(width=290, height=290, bg="#00B7CD", highlightthickness=0)
+    octopass_img = PhotoImage(file="octopass.png")
+    canvas.create_image(150, 150, image=octopass_img)
+    canvas.grid(column=1, row=0)
+except:
+    error_label = Label(window, text="You're missing the logo file", bg="#00B7CD", fg="#FFF1D1")
+    error_label.grid(column=1, row=0)
+    pass
+
 window.configure(bg="#00B7CD")
 window.configure(padx=10, pady=10)
-window.iconbitmap("octoicon.ico")
-
+try:
+    window.iconbitmap("octoicon.ico")
+except:
+    pass
 
 
 # Label
